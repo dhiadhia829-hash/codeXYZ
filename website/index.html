@@ -3,79 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta
+      name="description"
+      content="CodeXYZ is a web development studio building custom websites and web applications."
+    />
     <title>CodeXYZ — Built for your vision</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Audiowide&family=Orbitron:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-
     <style>
-      /* =========================================================
-       RESET
-    ========================================================= */
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       html {
         scroll-behavior: smooth;
       }
-
       body {
         background: #000;
         color: #fff;
         font-family: system-ui, sans-serif;
         overflow-x: hidden;
       }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
       button,
       input,
       textarea,
       select {
         font: inherit;
       }
-
-      /* =========================================================
-       VARIABLES
-    ========================================================= */
-
       :root {
         --pink: #f967fb;
-        --pink-soft: rgba(249, 103, 251, 0.35);
-
         --purple: #6958d5;
         --green: #53bc28;
         --green-light: #83f36e;
-
         --orange: #fe8a2e;
-        --blue: #60aed5;
-
-        --black: #000;
-        --black-soft: #050505;
-        --white: #fff;
-
         --muted: rgba(255, 255, 255, 0.55);
-
         --ease: cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      /* =========================================================
-       FLOATING LOGO
-    ========================================================= */
-
+      /* FLOATING LOGO */
       .floating-logo {
         position: fixed;
         top: 22px;
@@ -85,17 +55,14 @@
         font-family: "Tilt Neon", cursive;
         font-size: 2rem;
         letter-spacing: 0.05em;
-        color: white;
         opacity: 0;
         pointer-events: none;
         white-space: nowrap;
         text-shadow: 0 0 3px #fff, 0 0 8px var(--pink), 0 0 18px var(--pink),
           0 0 35px var(--purple), 0 0 60px var(--purple);
-        transition: opacity 0.6s var(--ease), transform 0.8s var(--ease),
-          font-size 0.5s var(--ease);
+        transition: opacity 0.6s var(--ease), transform 0.8s var(--ease);
         animation: floating-neon 5s ease-in-out infinite;
       }
-
       .floating-logo::after {
         content: "";
         position: absolute;
@@ -109,31 +76,15 @@
           0 0 25px var(--purple);
         transition: width 0.8s var(--ease);
       }
-
       .floating-logo.visible {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
-
       .floating-logo.visible::after {
         width: 100%;
       }
 
-      /* =========================================================
-       GENERAL
-    ========================================================= */
-
-      .stage {
-        position: relative;
-      }
-
-      .pin {
-        position: sticky;
-        top: 0;
-        height: 100svh;
-        overflow: hidden;
-      }
-
+      /* GENERAL */
       .section-label {
         color: var(--pink);
         font-family: "Orbitron", sans-serif;
@@ -142,7 +93,6 @@
         text-transform: uppercase;
         margin-bottom: 25px;
       }
-
       .word {
         display: inline-block;
         transform: translate3d(0, 0.7em, 0);
@@ -153,23 +103,28 @@
         transition-delay: var(--delay, 0ms);
         will-change: transform, opacity, filter;
       }
-
       .revealed .word {
-        transform: translate3d(0, 0, 0);
+        transform: none;
         opacity: 1;
         filter: blur(0);
       }
+      .pink {
+        color: var(--pink);
+        text-shadow: 0 0 15px var(--pink), 0 0 40px rgba(249, 103, 251, 0.45);
+      }
+      .section-title {
+        max-width: 1000px;
+        font-size: clamp(3rem, 8vw, 8rem);
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+        margin-bottom: 50px;
+      }
 
-      /* =========================================================
-       HERO
-       300vh SCROLL STAGE
-    ========================================================= */
-
+      /* HERO */
       .hero-stage {
         height: 300vh;
         background: #000;
       }
-
       .hero {
         position: sticky;
         top: 0;
@@ -178,21 +133,16 @@
         overflow: hidden;
         background: #000;
       }
-
       #tubes-canvas {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         display: block;
-        touch-action: none;
+        touch-action: pan-y;
         transform: translateY(var(--hero-y, 0px)) scale(var(--hero-scale, 1));
         opacity: var(--hero-opacity, 1);
-        transition: none;
       }
-
-      /* subtle dark overlay */
-
       .hero::after {
         content: "";
         position: absolute;
@@ -206,7 +156,6 @@
         pointer-events: none;
         z-index: 2;
       }
-
       .hero-content {
         position: relative;
         z-index: 5;
@@ -221,7 +170,6 @@
           scale(var(--hero-content-scale, 1));
         opacity: var(--hero-content-opacity, 1);
       }
-
       .hero-overline {
         color: var(--pink);
         font-family: "Orbitron", sans-serif;
@@ -231,7 +179,6 @@
         margin-bottom: 25px;
         opacity: 0.85;
       }
-
       .hero h1 {
         font-family: "Tilt Neon", cursive;
         animation: neon-on 2.4s linear 1 both,
@@ -242,11 +189,9 @@
         letter-spacing: -0.03em;
         line-height: 0.8;
         white-space: nowrap;
-        color: white;
         text-shadow: 0 0 5px #fff, 0 0 15px var(--pink), 0 0 35px var(--pink),
           0 0 70px var(--purple), 0 0 110px var(--purple);
       }
-
       .tagline {
         margin-top: 30px;
         font-family: "Orbitron", sans-serif;
@@ -255,20 +200,24 @@
         text-transform: uppercase;
         opacity: 0.75;
       }
-
       .hero-scroll {
         position: absolute;
         bottom: 35px;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 5;
         font-family: "Orbitron", sans-serif;
         font-size: 0.6rem;
         letter-spacing: 0.3em;
         text-transform: uppercase;
         opacity: 0.5;
         animation: scrollPulse 2s infinite;
+        transition: opacity 0.4s ease;
       }
-
+      .hero-scroll.hidden {
+        animation: none;
+        opacity: 0;
+      }
       .hero-scroll span {
         display: block;
         text-align: center;
@@ -276,10 +225,7 @@
         font-size: 1.3rem;
       }
 
-      /* =========================================================
-       ABOUT
-    ========================================================= */
-
+      /* ABOUT */
       .about {
         min-height: 100vh;
         padding: 150px 8vw;
@@ -292,7 +238,6 @@
           #000;
         overflow: hidden;
       }
-
       .about::before {
         content: "";
         position: absolute;
@@ -305,39 +250,22 @@
         filter: blur(180px);
         opacity: 0.06;
       }
-
       .about-inner {
         max-width: 1200px;
         margin: auto;
       }
-
-      .section-title {
-        max-width: 1000px;
-        font-size: clamp(3rem, 8vw, 8rem);
-        line-height: 0.9;
-        letter-spacing: -0.055em;
-        margin-bottom: 50px;
-      }
-
-      .pink {
-        color: var(--pink);
-        text-shadow: 0 0 15px var(--pink), 0 0 40px rgba(249, 103, 251, 0.45);
-      }
-
       .description {
         max-width: 700px;
         font-size: clamp(1rem, 1.5vw, 1.2rem);
         line-height: 1.9;
         color: var(--muted);
       }
-
       .about-grid {
         margin-top: 100px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
-
       .about-card {
         position: relative;
         min-height: 240px;
@@ -358,19 +286,17 @@
         will-change: transform, opacity;
         transition-delay: var(--delay);
       }
-
       .about-card.visible {
-        transform: translateY(0);
+        transform: none;
         opacity: 1;
       }
-
-      .about-card:hover {
+      .about-card.visible:hover {
         transform: translateY(-12px) scale(1.015);
+        transition-delay: 0ms;
         border-color: rgba(249, 103, 251, 0.65);
         box-shadow: 0 18px 60px rgba(249, 103, 251, 0.12),
           inset 0 0 35px rgba(249, 103, 251, 0.035);
       }
-
       .about-card::after {
         content: "";
         position: absolute;
@@ -385,31 +311,23 @@
         transition: opacity 0.45s ease;
         pointer-events: none;
       }
-
       .about-card:hover::after {
         opacity: 1;
       }
-
       .about-card h3 {
         font-size: 1.5rem;
         margin-bottom: 20px;
       }
-
       .about-card p {
         color: var(--muted);
         line-height: 1.7;
       }
 
-      /* =========================================================
-       SERVICES
-       320vh PINNED STAGE
-    ========================================================= */
-
+      /* SERVICES */
       .services-stage {
         height: 320vh;
         background: #030303;
       }
-
       .services-pin {
         position: sticky;
         top: 0;
@@ -419,19 +337,17 @@
         align-items: center;
         padding: 8vw;
       }
-
       .services-bg-number {
         position: absolute;
         right: -2vw;
         top: 50%;
-        transform: translateY(-50%) translateX(var(--services-number-x, 0px));
+        transform: translateY(-50%);
         font-family: "Orbitron", sans-serif;
         font-size: clamp(12rem, 30vw, 35rem);
         line-height: 0.7;
         color: rgba(255, 255, 255, 0.025);
         user-select: none;
       }
-
       .services-container {
         position: relative;
         z-index: 3;
@@ -443,31 +359,26 @@
         gap: 80px;
         align-items: center;
       }
-
       .services-heading {
         transform: translateY(var(--services-heading-y, 0px));
         opacity: var(--services-heading-opacity, 1);
       }
-
       .services-heading h2 {
         font-size: clamp(3.5rem, 7vw, 8rem);
         line-height: 0.85;
         letter-spacing: -0.055em;
       }
-
       .services-heading p {
         max-width: 430px;
         margin-top: 30px;
         color: var(--muted);
         line-height: 1.8;
       }
-
       .services-list {
         display: flex;
         flex-direction: column;
         border-top: 1px solid rgba(255, 255, 255, 0.15);
       }
-
       .service {
         position: relative;
         display: grid;
@@ -482,13 +393,11 @@
           padding-left 0.7s var(--ease);
         will-change: transform, opacity;
       }
-
       .service.active {
         opacity: 1;
-        transform: translate3d(0, 0, 0);
+        transform: none;
         padding-left: 12px;
       }
-
       .service::before {
         content: "";
         position: absolute;
@@ -499,22 +408,18 @@
         box-shadow: 0 0 20px var(--pink);
         transition: height 0.6s var(--ease);
       }
-
       .service.active::before {
         height: 70%;
       }
-
       .service-number {
         font-family: "Orbitron", sans-serif;
         color: var(--pink);
         font-size: 0.75rem;
       }
-
       .service h3 {
         font-size: clamp(1.5rem, 3vw, 2.7rem);
         letter-spacing: -0.03em;
       }
-
       .service p {
         color: var(--muted);
         font-size: 0.9rem;
@@ -522,41 +427,29 @@
         margin-top: 8px;
         max-width: 500px;
       }
-
       .service-arrow {
         text-align: right;
         font-size: 1.4rem;
         opacity: 0.5;
         transition: 0.3s;
       }
-
       .service.active .service-arrow {
         color: var(--pink);
         opacity: 1;
         transform: translateX(8px);
         animation: arrow-float 1.8s ease-in-out infinite;
       }
-
       @keyframes arrow-float {
-        0%,
-        100% {
-          margin-right: 0;
-        }
         50% {
           margin-right: 5px;
         }
       }
 
-      /* =========================================================
-       PROJECTS
-       360vh PINNED STAGE
-    ========================================================= */
-
+      /* PROJECTS */
       .projects-stage {
         height: 360vh;
         background: #000;
       }
-
       .projects-pin {
         position: sticky;
         top: 0;
@@ -566,7 +459,6 @@
         display: flex;
         align-items: center;
       }
-
       .projects-container {
         width: 100%;
         max-width: 1250px;
@@ -576,26 +468,22 @@
         gap: 80px;
         align-items: center;
       }
-
       .projects-intro h2 {
         font-size: clamp(4rem, 8vw, 9rem);
         line-height: 0.82;
         letter-spacing: -0.06em;
       }
-
       .projects-intro p {
         max-width: 400px;
         color: var(--muted);
         line-height: 1.8;
         margin-top: 30px;
       }
-
       .project-stack {
         position: relative;
         height: 65vh;
         min-height: 500px;
       }
-
       .project {
         position: absolute;
         inset: 0;
@@ -620,14 +508,12 @@
         will-change: transform, opacity;
         pointer-events: none;
       }
-
       .project.active {
         opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1);
+        transform: none;
         box-shadow: 0 35px 110px rgba(249, 103, 251, 0.1);
         pointer-events: auto;
       }
-
       .project::before {
         content: "";
         position: absolute;
@@ -641,46 +527,36 @@
         opacity: 0.18;
         transition: opacity 0.7s ease;
       }
-
       .project.active::before {
         opacity: 0.35;
       }
-
-      .project-number {
+      .project > * {
         position: relative;
         z-index: 2;
+      }
+      .project-number {
         font-family: "Orbitron", sans-serif;
         color: var(--pink);
         font-size: 0.7rem;
         letter-spacing: 0.2em;
         margin-bottom: 15px;
       }
-
       .project h3 {
-        position: relative;
-        z-index: 2;
         font-size: clamp(3rem, 6vw, 6rem);
         letter-spacing: -0.05em;
         line-height: 0.85;
       }
-
       .project p {
-        position: relative;
-        z-index: 2;
         margin-top: 20px;
         color: var(--muted);
         font-size: 1rem;
       }
-
       .project-tech {
-        position: relative;
-        z-index: 2;
         margin-top: 30px;
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
       }
-
       .project-tech span {
         border: 1px solid rgba(255, 255, 255, 0.2);
         padding: 8px 12px;
@@ -689,7 +565,6 @@
         letter-spacing: 0.1em;
         color: rgba(255, 255, 255, 0.65);
       }
-
       .project-progress {
         position: absolute;
         right: 35px;
@@ -700,23 +575,18 @@
         gap: 12px;
         z-index: 10;
       }
-
       .project-progress span {
         width: 4px;
         height: 35px;
         background: rgba(255, 255, 255, 0.15);
         transition: 0.4s;
       }
-
       .project-progress span.active {
         background: var(--pink);
         box-shadow: 0 0 15px var(--pink);
       }
 
-      /* =========================================================
-       STATEMENT BAND
-    ========================================================= */
-
+      /* STATEMENT */
       .statement {
         min-height: 75vh;
         padding: 130px 8vw;
@@ -729,27 +599,23 @@
         display: flex;
         align-items: center;
       }
-
       .statement-inner {
         width: 100%;
         max-width: 1250px;
         margin: auto;
       }
-
       .statement h2 {
         max-width: 1100px;
         font-size: clamp(3rem, 7vw, 8rem);
         line-height: 0.9;
         letter-spacing: -0.055em;
       }
-
       .statement-columns {
         margin-top: 100px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 50px;
       }
-
       .statement-column {
         border-top: 1px solid rgba(255, 255, 255, 0.15);
         padding-top: 25px;
@@ -758,12 +624,10 @@
         transition: opacity 1s var(--ease), transform 1s var(--ease);
         transition-delay: var(--delay);
       }
-
       .statement-column.visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
       }
-
       .statement-column h3 {
         color: var(--pink);
         font-family: "Orbitron", sans-serif;
@@ -771,16 +635,159 @@
         letter-spacing: 0.15em;
         margin-bottom: 15px;
       }
-
       .statement-column p {
         color: var(--muted);
         line-height: 1.8;
       }
 
-      /* =========================================================
-       CONTACT
-    ========================================================= */
+      /* WHY CODEXYZ */
+      .why-codexyz {
+        position: relative;
+        padding: 150px 6vw;
+        overflow: hidden;
+        background: radial-gradient(
+            circle at 15% 50%,
+            rgba(105, 88, 213, 0.1),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(249, 103, 251, 0.07),
+            transparent 30%
+          );
+      }
+      .why-codexyz::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        left: -220px;
+        top: 20%;
+        border: 1px solid rgba(105, 88, 213, 0.14);
+        border-radius: 50%;
+        box-shadow: 0 0 80px rgba(105, 88, 213, 0.08);
+        pointer-events: none;
+      }
+      .why-codexyz-inner {
+        position: relative;
+        max-width: 1250px;
+        margin: 0 auto;
+      }
+      .why-codexyz-heading {
+        max-width: 700px;
+        margin-bottom: 70px;
+      }
+      .why-codexyz-heading .section-label {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: #9c8cff;
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+      }
+      .why-codexyz-heading h2 {
+        margin: 0 0 22px;
+        font-family: "Audiowide", sans-serif;
+        font-size: clamp(2.5rem, 6vw, 5.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+      }
+      .why-codexyz-heading h2 span {
+        color: #b46cff;
+        text-shadow: 0 0 12px rgba(180, 108, 255, 0.55),
+          0 0 35px rgba(105, 88, 213, 0.28);
+      }
+      .why-codexyz-heading p {
+        max-width: 610px;
+        color: rgba(255, 255, 255, 0.58);
+        line-height: 1.8;
+      }
+      .why-codexyz-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .why-card {
+        position: relative;
+        min-height: 245px;
+        padding: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 16px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(105, 88, 213, 0.025)
+        );
+        overflow: hidden;
+      }
+      .why-card::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        right: -90px;
+        bottom: -100px;
+        border-radius: 50%;
+        background: rgba(105, 88, 213, 0.16);
+        filter: blur(35px);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        opacity: 0.5;
+      }
+      .why-card.visible:hover {
+        transform: translateY(-7px);
+        border-color: rgba(160, 108, 255, 0.5);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25),
+          0 0 25px rgba(105, 88, 213, 0.12);
+      }
+      .why-card:hover::after {
+        transform: scale(1.45);
+        opacity: 0.9;
+      }
+      .why-number {
+        display: block;
+        margin-bottom: 32px;
+        color: rgba(180, 108, 255, 0.72);
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+      }
+      .why-card h3 {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 12px;
+        font-family: "Audiowide", sans-serif;
+        font-size: 1.25rem;
+      }
+      .why-card p {
+        position: relative;
+        z-index: 1;
+        max-width: 440px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.7;
+        font-size: 0.92rem;
+      }
+      .why-codexyz .reveal {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(5px);
+        transition: opacity 0.8s var(--ease), transform 0.8s var(--ease),
+          filter 0.8s var(--ease);
+      }
+      .why-codexyz .reveal.visible {
+        opacity: 1;
+        transform: none;
+        filter: blur(0);
+      }
+      .why-codexyz-grid .why-card:nth-child(2) {
+        transition-delay: 100ms;
+      }
+      .why-codexyz-grid .why-card:nth-child(3) {
+        transition-delay: 200ms;
+      }
+      .why-codexyz-grid .why-card:nth-child(4) {
+        transition-delay: 300ms;
+      }
 
+      /* CONTACT */
       #contact {
         min-height: 100vh;
         padding: 140px 8vw;
@@ -794,7 +801,6 @@
         flex-direction: column;
         justify-content: center;
       }
-
       .contact-container {
         width: 100%;
         max-width: 1250px;
@@ -803,53 +809,78 @@
         grid-template-columns: 1fr 1fr;
         gap: 100px;
       }
-
       .contact-info h2 {
         font-size: clamp(3.5rem, 7vw, 8rem);
         line-height: 0.85;
         letter-spacing: -0.055em;
       }
-
       .contact-info p {
         margin-top: 35px;
         max-width: 500px;
         color: var(--muted);
         line-height: 1.8;
       }
-
       .contact-links {
         margin-top: 45px;
         display: flex;
         flex-direction: column;
         gap: 18px;
       }
-
-      .contact-links a {
+      .contact-social-link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         width: fit-content;
-        color: #fff;
+        padding: 7px 12px;
+        border: 1px solid rgba(105, 88, 213, 0.28);
+        border-radius: 9px;
+        color: rgba(255, 255, 255, 0.72);
         text-decoration: none;
         font-family: "Orbitron", sans-serif;
         font-size: 0.8rem;
         letter-spacing: 0.08em;
-        transition: 0.3s;
+        background: rgba(105, 88, 213, 0.035);
+        transition: color 0.3s, border-color 0.3s, background 0.3s,
+          box-shadow 0.3s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
-
-      .contact-links a:hover {
-        color: var(--pink);
-        transform: translateX(10px);
+      .contact-social-link::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(105, 88, 213, 0.22),
+          rgba(249, 103, 251, 0.18),
+          transparent
+        );
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.35s ease;
       }
-
-      /* =========================================================
-       FORM
-    ========================================================= */
-
+      .contact-social-link:hover::before {
+        opacity: 1;
+      }
+      .contact-social-link:hover {
+        color: #c98cff;
+        border-color: rgba(170, 105, 255, 0.9);
+        background: rgba(105, 88, 213, 0.12);
+        box-shadow: 0 0 8px rgba(105, 88, 213, 0.45),
+          0 0 22px rgba(105, 88, 213, 0.25),
+          inset 0 0 12px rgba(249, 103, 251, 0.05);
+        transform: translateY(-3px);
+      }
+      .contact-social-link:active {
+        transform: translateY(-1px) scale(0.98);
+      }
       .contact-form {
         display: flex;
         flex-direction: column;
         gap: 18px;
         perspective: 900px;
       }
-
       .contact-form input,
       .contact-form textarea,
       .contact-form select {
@@ -860,13 +891,12 @@
         border-radius: 10px;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.012);
         transform: translateZ(0);
-        color: white;
+        color: #fff;
         outline: none;
-        transition: border-color 0.4s ease, box-shadow 0.4s ease,
-          transform 0.4s var(--ease), background 0.4s ease;
+        transition: border-color 0.4s, box-shadow 0.4s,
+          transform 0.4s var(--ease), background 0.4s;
         will-change: transform, box-shadow;
       }
-
       .contact-form input:focus,
       .contact-form textarea:focus,
       .contact-form select:focus {
@@ -876,21 +906,17 @@
           inset 0 0 18px rgba(249, 103, 251, 0.025);
         transform: translateX(5px) translateZ(8px);
       }
-
       .contact-form textarea {
         min-height: 170px;
         resize: vertical;
         border-radius: 12px;
       }
-
       .contact-form select {
         appearance: none;
       }
-
       .contact-form option {
         background: #111;
       }
-
       .submit {
         padding: 20px;
         border: none;
@@ -902,75 +928,85 @@
         font-size: 0.75rem;
         letter-spacing: 0.12em;
         cursor: pointer;
-        transition: transform 0.4s var(--ease), background 0.4s ease,
-          box-shadow 0.4s ease;
+        transition: transform 0.4s var(--ease), background 0.4s, box-shadow 0.4s;
       }
-
       .submit:hover {
         background: var(--pink);
-        color: white;
+        color: #fff;
         transform: translateY(-5px) scale(1.01);
         box-shadow: 0 0 35px rgba(249, 103, 251, 0.45);
       }
-
       .submit:disabled {
         opacity: 0.6;
         cursor: wait;
       }
-
       .contact-form > * {
-        animation: form-rise 0.8s var(--ease) both;
+        animation: form-rise 0.8s var(--ease) backwards;
       }
-
-      .contact-form > *:nth-child(1) {
-        animation-delay: 80ms;
-      }
-      .contact-form > *:nth-child(2) {
+      .contact-form > :nth-child(2) {
         animation-delay: 140ms;
       }
-      .contact-form > *:nth-child(3) {
+      .contact-form > :nth-child(3) {
         animation-delay: 200ms;
       }
-      .contact-form > *:nth-child(4) {
+      .contact-form > :nth-child(4) {
         animation-delay: 260ms;
       }
-      .contact-form > *:nth-child(5) {
+      .contact-form > :nth-child(5) {
         animation-delay: 320ms;
       }
-      .contact-form > *:nth-child(6) {
+      .contact-form > :nth-child(6) {
         animation-delay: 380ms;
       }
-
+      .contact-form > :nth-child(1) {
+        animation-delay: 80ms;
+      }
       @keyframes form-rise {
         from {
           opacity: 0;
           transform: translateY(22px);
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
       }
 
-      /* =========================================================
-       FOOTER
-    ========================================================= */
-
+      /* FOOTER */
       footer {
-        padding: 30px 8vw;
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 75px 6vw 45px;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
-        display: flex;
-        justify-content: space-between;
-        color: rgba(255, 255, 255, 0.35);
+        overflow: hidden;
+      }
+      .footer-brand {
+        margin-bottom: 14px;
+        font-family: "Audiowide", sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        letter-spacing: 0.04em;
+        color: #fff;
+        text-shadow: 0 0 18px rgba(249, 103, 251, 0.28);
+      }
+      .footer-services {
+        margin-bottom: 22px;
+        color: rgba(180, 108, 255, 0.8);
         font-family: "Orbitron", sans-serif;
-        font-size: 0.6rem;
-        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+        letter-spacing: 0.13em;
+      }
+      .footer-copy {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
       }
 
-      /* =========================================================
-       RESULT MODAL (success / error after sending the form)
-    ========================================================= */
-
+      /* RESULT MODAL */
       .result-modal {
         position: fixed;
         inset: 0;
@@ -984,16 +1020,13 @@
         pointer-events: none;
         transition: opacity 0.4s var(--ease);
       }
-
       .result-modal.show {
         opacity: 1;
         pointer-events: auto;
       }
-
       .result-card {
         --accent: var(--green-light);
         --accent-glow: rgba(131, 243, 110, 0.45);
-
         position: relative;
         width: min(440px, 100%);
         padding: 50px 36px 36px;
@@ -1012,17 +1045,14 @@
         transform: translateY(40px) scale(0.9);
         transition: transform 0.7s var(--ease);
       }
-
       .result-modal.show .result-card {
-        transform: translateY(0) scale(1);
+        transform: none;
       }
-
       .result-modal.error .result-card {
         --accent: var(--orange);
         --accent-glow: rgba(254, 138, 46, 0.45);
         border-color: rgba(254, 138, 46, 0.5);
       }
-
       .result-card::before {
         content: "";
         position: absolute;
@@ -1040,7 +1070,6 @@
         );
         box-shadow: 0 0 20px var(--pink);
       }
-
       .result-icon {
         width: 84px;
         height: 84px;
@@ -1054,7 +1083,6 @@
         animation: icon-pop 0.7s var(--ease) 0.15s both,
           icon-pulse 2.5s ease-in-out 1s infinite;
       }
-
       .result-icon svg {
         width: 42px;
         height: 42px;
@@ -1065,29 +1093,24 @@
         stroke-linejoin: round;
         filter: drop-shadow(0 0 6px var(--accent));
       }
-
       .result-icon path {
         stroke-dasharray: 60;
         stroke-dashoffset: 60;
       }
-
       .result-modal.show .result-icon path {
         animation: draw 0.6s ease 0.5s forwards;
       }
-
       .result-title {
         font-family: "Audiowide", sans-serif;
         font-size: 1.5rem;
         margin-bottom: 12px;
         text-shadow: 0 0 18px rgba(249, 103, 251, 0.35);
       }
-
       .result-message {
         color: var(--muted);
         line-height: 1.7;
         font-size: 0.92rem;
       }
-
       .result-btn {
         margin-top: 28px;
         padding: 15px 34px;
@@ -1100,17 +1123,14 @@
         font-size: 0.7rem;
         letter-spacing: 0.12em;
         cursor: pointer;
-        transition: transform 0.4s var(--ease), background 0.4s ease,
-          box-shadow 0.4s ease;
+        transition: transform 0.4s var(--ease), background 0.4s, box-shadow 0.4s;
       }
-
       .result-btn:hover {
         background: var(--pink);
         color: #fff;
         transform: translateY(-3px);
         box-shadow: 0 0 30px rgba(249, 103, 251, 0.45);
       }
-
       .result-timer {
         position: absolute;
         left: 0;
@@ -1122,17 +1142,14 @@
         transform-origin: left;
         transform: scaleX(0);
       }
-
       .result-modal.show .result-timer {
         animation: timer 6s linear forwards;
       }
-
       @keyframes draw {
         to {
           stroke-dashoffset: 0;
         }
       }
-
       @keyframes timer {
         from {
           transform: scaleX(1);
@@ -1141,18 +1158,16 @@
           transform: scaleX(0);
         }
       }
-
       @keyframes icon-pop {
         from {
           transform: scale(0) rotate(-90deg);
           opacity: 0;
         }
         to {
-          transform: scale(1) rotate(0);
+          transform: none;
           opacity: 1;
         }
       }
-
       @keyframes icon-pulse {
         50% {
           box-shadow: 0 0 45px var(--accent-glow),
@@ -1160,26 +1175,17 @@
         }
       }
 
-      /* =========================================================
-       ANIMATIONS
-    ========================================================= */
-
+      /* ANIMATIONS */
       @keyframes hero-breathe {
-        0%,
-        100% {
-          transform: scale(1);
-        }
         50% {
           transform: scale(1.018);
         }
       }
-
       @keyframes neon-on {
         0%,
         8% {
           opacity: 0;
         }
-
         9%,
         12%,
         16%,
@@ -1187,53 +1193,44 @@
         100% {
           opacity: 1;
         }
-
         10%,
         14%,
         19% {
           opacity: 0.15;
         }
-
         30% {
           opacity: 0.6;
         }
-
         32% {
           opacity: 1;
         }
       }
-
       @keyframes neon-glow {
         0%,
         100% {
           text-shadow: 0 0 4px #fff, 0 0 12px var(--pink), 0 0 28px var(--pink),
             0 0 56px var(--purple), 0 0 90px var(--purple);
         }
-
         33% {
           text-shadow: 0 0 3px #fff, 0 0 10px var(--purple),
             0 0 24px var(--purple), 0 0 48px var(--pink), 0 0 80px var(--pink);
         }
-
         66% {
           text-shadow: 0 0 4px #fff, 0 0 12px var(--green-light),
             0 0 30px var(--green), 0 0 60px var(--green), 0 0 96px var(--purple);
         }
       }
-
       @keyframes floating-neon {
         0%,
         100% {
           text-shadow: 0 0 3px #fff, 0 0 8px var(--pink), 0 0 18px var(--pink),
             0 0 35px var(--purple), 0 0 60px var(--purple);
         }
-
         50% {
           text-shadow: 0 0 3px #fff, 0 0 12px var(--green-light),
             0 0 25px var(--green), 0 0 45px var(--purple), 0 0 70px var(--pink);
         }
       }
-
       @keyframes scrollPulse {
         50% {
           opacity: 0.2;
@@ -1241,11 +1238,10 @@
         }
       }
 
-      /* =========================================================
-       REDUCED MOTION
-    ========================================================= */
-
       @media (prefers-reduced-motion: reduce) {
+        .contact-social-link:hover {
+          transform: none;
+        }
         *,
         *::before,
         *::after {
@@ -1254,437 +1250,141 @@
           transition-duration: 0.01ms !important;
           scroll-behavior: auto !important;
         }
-
-        .word {
-          opacity: 1;
-          transform: none;
-        }
-
+        .word,
         .service,
-        .project,
+        .project.active,
         .about-card,
-        .statement-column {
+        .statement-column,
+        .reveal {
           opacity: 1;
           transform: none;
+          filter: none;
         }
       }
 
-      /* =========================================================
-       MOBILE
-    ========================================================= */
-
+      /* MOBILE */
       @media (max-width: 850px) {
         .floating-logo {
           top: 18px;
           font-size: 1.5rem;
         }
-
         .hero h1 {
           font-size: clamp(3.5rem, 18vw, 7rem);
         }
-
         .about,
         #contact {
           padding: 100px 7vw;
         }
-
         .about-grid {
           grid-template-columns: 1fr;
           margin-top: 60px;
         }
-
         .services-pin,
         .projects-pin {
           padding: 7vw;
         }
-
         .services-container,
         .projects-container,
         .contact-container {
           grid-template-columns: 1fr;
           gap: 50px;
         }
-
-        .services-heading p {
+        .services-heading p,
+        .service p,
+        .projects-intro p {
           display: none;
         }
-
         .services-list {
           margin-top: 10px;
         }
-
         .service {
           grid-template-columns: 45px 1fr 30px;
           padding: 22px 0;
         }
-
-        .service p {
-          display: none;
-        }
-
         .project-stack {
           height: 50vh;
-          min-height: 400px;
+          min-height: 360px;
         }
-
         .project {
           padding: 30px;
         }
-
         .project h3 {
           font-size: clamp(2.8rem, 12vw, 5rem);
         }
-
-        .projects-intro p {
-          display: none;
-        }
-
         .statement {
           padding: 100px 7vw;
         }
-
         .statement-columns {
           grid-template-columns: 1fr;
           gap: 35px;
           margin-top: 60px;
         }
-
-        footer {
-          flex-direction: column;
-          gap: 12px;
-        }
       }
-
-      /* === Premium neon contact links === */
-      .contact-social-link {
-        position: relative;
-        display: inline-flex !important;
-        align-items: center;
-        gap: 8px;
-        padding: 7px 12px;
-        margin: 2px 4px 2px 0;
-        border: 1px solid rgba(105, 88, 213, 0.28);
-        border-radius: 9px;
-        color: rgba(255, 255, 255, 0.72) !important;
-        text-decoration: none !important;
-        background: rgba(105, 88, 213, 0.035);
-        transition: color 0.3s ease, border-color 0.3s ease,
-          background 0.3s ease, box-shadow 0.3s ease,
-          transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-
-      .contact-social-link::before {
-        content: "";
-        position: absolute;
-        inset: -1px;
-        border-radius: inherit;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(105, 88, 213, 0.22),
-          rgba(249, 103, 251, 0.18),
-          transparent
-        );
-        opacity: 0;
-        z-index: -1;
-        transition: opacity 0.35s ease;
-      }
-
-      .contact-social-link:hover {
-        color: #c98cff !important;
-        border-color: rgba(170, 105, 255, 0.9);
-        background: rgba(105, 88, 213, 0.12);
-        box-shadow: 0 0 8px rgba(105, 88, 213, 0.45),
-          0 0 22px rgba(105, 88, 213, 0.25),
-          inset 0 0 12px rgba(249, 103, 251, 0.05);
-        transform: translateY(-3px);
-      }
-
-      .contact-social-link:hover::before {
-        opacity: 1;
-      }
-
-      .contact-social-link:active {
-        transform: translateY(-1px) scale(0.98);
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .contact-social-link {
-          transition: color 0.2s ease, border-color 0.2s ease,
-            background 0.2s ease;
-        }
-        .contact-social-link:hover {
-          transform: none;
-        }
-      }
-
-      /* === Why CodeXYZ === */
-      .why-codexyz {
-        position: relative;
-        padding: 150px 6vw;
-        overflow: hidden;
-        background: radial-gradient(
-            circle at 15% 50%,
-            rgba(105, 88, 213, 0.1),
-            transparent 32%
-          ),
-          radial-gradient(
-            circle at 85% 30%,
-            rgba(249, 103, 251, 0.07),
-            transparent 30%
-          );
-      }
-
-      .why-codexyz::before {
-        content: "";
-        position: absolute;
-        width: 420px;
-        height: 420px;
-        left: -220px;
-        top: 20%;
-        border: 1px solid rgba(105, 88, 213, 0.14);
-        border-radius: 50%;
-        box-shadow: 0 0 80px rgba(105, 88, 213, 0.08);
-        pointer-events: none;
-      }
-
-      .why-codexyz-inner {
-        position: relative;
-        max-width: 1250px;
-        margin: 0 auto;
-      }
-
-      .why-codexyz-heading {
-        max-width: 700px;
-        margin-bottom: 70px;
-      }
-
-      .why-codexyz-heading .section-label {
-        display: inline-block;
-        margin-bottom: 18px;
-        color: #9c8cff;
-        font-family: "Orbitron", sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 0.22em;
-      }
-
-      .why-codexyz-heading h2 {
-        margin: 0 0 22px;
-        font-family: "Audiowide", sans-serif;
-        font-size: clamp(2.5rem, 6vw, 5.5rem);
-        line-height: 0.95;
-        letter-spacing: -0.04em;
-      }
-
-      .why-codexyz-heading h2 span {
-        color: #b46cff;
-        text-shadow: 0 0 12px rgba(180, 108, 255, 0.55),
-          0 0 35px rgba(105, 88, 213, 0.28);
-      }
-
-      .why-codexyz-heading p {
-        max-width: 610px;
-        color: rgba(255, 255, 255, 0.58);
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-
-      .why-codexyz-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .why-card {
-        position: relative;
-        min-height: 245px;
-        padding: 34px;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 16px;
-        background: linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.045),
-          rgba(105, 88, 213, 0.025)
-        );
-        overflow: hidden;
-        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-          border-color 0.4s ease, box-shadow 0.4s ease;
-      }
-
-      .why-card::after {
-        content: "";
-        position: absolute;
-        width: 180px;
-        height: 180px;
-        right: -90px;
-        bottom: -100px;
-        border-radius: 50%;
-        background: rgba(105, 88, 213, 0.16);
-        filter: blur(35px);
-        transition: transform 0.5s ease, opacity 0.5s ease;
-        opacity: 0.5;
-      }
-
-      .why-card:hover {
-        transform: translateY(-7px);
-        border-color: rgba(160, 108, 255, 0.5);
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25),
-          0 0 25px rgba(105, 88, 213, 0.12);
-      }
-
-      .why-card:hover::after {
-        transform: scale(1.45);
-        opacity: 0.9;
-      }
-
-      .why-number {
-        display: block;
-        margin-bottom: 32px;
-        color: rgba(180, 108, 255, 0.72);
-        font-family: "Orbitron", sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 0.18em;
-      }
-
-      .why-card h3 {
-        position: relative;
-        z-index: 1;
-        margin: 0 0 12px;
-        font-family: "Audiowide", sans-serif;
-        font-size: 1.25rem;
-      }
-
-      .why-card p {
-        position: relative;
-        z-index: 1;
-        max-width: 440px;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.55);
-        line-height: 1.7;
-        font-size: 0.92rem;
-      }
-
       @media (max-width: 700px) {
         .why-codexyz {
           padding: 100px 6vw;
         }
-
         .why-codexyz-grid {
           grid-template-columns: 1fr;
         }
-
         .why-card {
           min-height: auto;
         }
-      }
-
-      /* === CodeXYZ Footer === */
-      footer {
-        position: relative;
-        text-align: center;
-        padding: 75px 6vw 45px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        overflow: hidden;
-      }
-
-      .footer-brand {
-        margin-bottom: 14px;
-        font-family: "Audiowide", sans-serif;
-        font-size: clamp(1.5rem, 3vw, 2.2rem);
-        letter-spacing: 0.04em;
-        color: #fff;
-        text-shadow: 0 0 18px rgba(249, 103, 251, 0.28);
-      }
-
-      .footer-services {
-        margin-bottom: 22px;
-        color: rgba(180, 108, 255, 0.8);
-        font-family: "Orbitron", sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 0.13em;
-      }
-
-      .footer-copy {
-        color: rgba(255, 255, 255, 0.35);
-        font-size: 0.78rem;
-        letter-spacing: 0.04em;
       }
     </style>
   </head>
 
   <body>
-    <!-- =======================================================
-       FLOATING LOGO
-  ======================================================== -->
-
     <div class="floating-logo" id="floatingLogo">codeXYZ</div>
 
-    <!-- =======================================================
-       HERO — 300VH PINNED
-  ======================================================== -->
-
+    <!-- HERO -->
     <section class="hero-stage" id="home">
       <div class="hero">
         <canvas id="tubes-canvas"></canvas>
-
         <div class="hero-content">
           <div class="hero-overline">Digital development studio</div>
-
           <h1>codeXYZ</h1>
-
           <div class="tagline">Built for your vision.</div>
         </div>
-
-        <div class="hero-scroll">
+        <div class="hero-scroll" id="heroScroll">
           Scroll to explore
           <span>↓</span>
         </div>
       </div>
     </section>
 
-    <!-- =======================================================
-       ABOUT
-  ======================================================== -->
-
+    <!-- ABOUT -->
     <section class="about" id="about">
       <div class="about-inner">
         <div class="section-label">01 — About</div>
-
-        <h2 class="section-title split" data-reveal>
+        <h2 class="section-title" data-reveal>
           Your idea.
           <br />
-          <span class="pink"> Built digitally. </span>
+          <span class="pink">Built digitally.</span>
         </h2>
-
-        <p class="description split" data-reveal>
+        <p class="description" data-reveal>
           CodeXYZ is a web development studio focused on creating modern,
           responsive and custom websites for businesses, professionals and
           individuals. Every project is built around the client's idea, goals
           and identity.
         </p>
-
         <div class="about-grid">
           <div class="about-card" data-card style="--delay: 0ms">
             <h3>01 / Design</h3>
-
             <p>
               Clean and modern interfaces designed to make your business stand
               out.
             </p>
           </div>
-
           <div class="about-card" data-card style="--delay: 100ms">
             <h3>02 / Development</h3>
-
             <p>
               Fast, responsive and functional websites built around your
               requirements.
             </p>
           </div>
-
           <div class="about-card" data-card style="--delay: 200ms">
             <h3>03 / Your Vision</h3>
-
             <p>
               Your idea comes first. The website is built specifically for what
               you need.
@@ -1694,87 +1394,67 @@
       </div>
     </section>
 
-    <!-- =======================================================
-       SERVICES — 320VH PINNED
-  ======================================================== -->
-
+    <!-- SERVICES -->
     <section class="services-stage" id="services">
       <div class="services-pin">
         <div class="services-bg-number">04</div>
-
         <div class="services-container">
           <div class="services-heading">
             <div class="section-label">02 — Services</div>
-
             <h2>
-              What can<br />
-              we <span class="pink">build?</span>
+              What can
+              <br />
+              we
+              <span class="pink">build?</span>
             </h2>
-
             <p>
               From a simple business website to a custom web application, every
               project is developed around a real purpose.
             </p>
           </div>
-
           <div class="services-list">
             <article class="service">
               <div class="service-number">01</div>
-
               <div>
                 <h3>Business Websites</h3>
-
                 <p>
                   Professional websites that present your company, services and
                   brand online.
                 </p>
               </div>
-
               <div class="service-arrow">→</div>
             </article>
-
             <article class="service">
               <div class="service-number">02</div>
-
               <div>
                 <h3>E-Commerce</h3>
-
                 <p>
                   Online stores where customers can discover products and place
                   orders.
                 </p>
               </div>
-
               <div class="service-arrow">→</div>
             </article>
-
             <article class="service">
               <div class="service-number">03</div>
-
               <div>
                 <h3>Web Applications</h3>
-
                 <p>
                   Custom interactive web applications designed around your
                   specific workflow.
                 </p>
               </div>
-
               <div class="service-arrow">→</div>
             </article>
-
             <article class="service">
               <div class="service-number">04</div>
-
               <div>
                 <h3>Personal Websites</h3>
-
                 <p>
                   Portfolios, personal brands and professional websites designed
                   around you.
                 </p>
               </div>
-
               <div class="service-arrow">→</div>
             </article>
           </div>
@@ -1782,38 +1462,29 @@
       </div>
     </section>
 
-    <!-- =======================================================
-       PROJECTS — 360VH PINNED
-  ======================================================== -->
-
+    <!-- PROJECTS -->
     <section class="projects-stage" id="projects">
       <div class="projects-pin">
         <div class="projects-container">
           <div class="projects-intro">
             <div class="section-label">03 — Selected Work</div>
-
             <h2>
-              Things<br />
-              I've<br />
-              <span class="pink"> built. </span>
+              Things
+              <br />
+              I've
+              <br />
+              <span class="pink">built.</span>
             </h2>
-
             <p>
               Real projects, real problems and real solutions. The next project
               could be yours.
             </p>
           </div>
-
           <div class="project-stack">
-            <!-- PROJECT 1 -->
-
             <article class="project">
               <div class="project-number">PROJECT 01</div>
-
               <h3>Restaurant</h3>
-
               <p>Website • Ordering • Database</p>
-
               <div class="project-tech">
                 <span>HTML</span>
                 <span>CSS</span>
@@ -1822,42 +1493,30 @@
                 <span>JAVASCRIPT</span>
               </div>
             </article>
-
-            <!-- PROJECT 2 -->
-
             <article class="project">
               <div class="project-number">PROJECT 02</div>
-
               <h3>Your Project</h3>
-
               <p>The next digital experience could belong here.</p>
-
               <div class="project-tech">
                 <span>WEB</span>
                 <span>DESIGN</span>
                 <span>DEVELOPMENT</span>
               </div>
             </article>
-
-            <!-- PROJECT 3 -->
-
             <article class="project">
               <div class="project-number">PROJECT 03</div>
-
               <h3>
-                Something<br />
+                Something
+                <br />
                 New
               </h3>
-
               <p>Custom software built around a specific idea.</p>
-
               <div class="project-tech">
                 <span>APP</span>
                 <span>API</span>
                 <span>DATABASE</span>
               </div>
             </article>
-
             <div class="project-progress">
               <span></span>
               <span></span>
@@ -1868,44 +1527,33 @@
       </div>
     </section>
 
-    <!-- =======================================================
-       STATEMENT
-  ======================================================== -->
-
+    <!-- STATEMENT -->
     <section class="statement">
       <div class="statement-inner">
         <div class="section-label">04 — The idea</div>
-
-        <h2 class="section-title split" data-reveal>
+        <h2 class="section-title" data-reveal>
           Don't just put your business
-          <span class="pink"> online. </span>
-
+          <span class="pink">online.</span>
           Make it
-          <span class="pink"> memorable. </span>
+          <span class="pink">memorable.</span>
         </h2>
-
         <div class="statement-columns">
           <div class="statement-column" data-statement style="--delay: 0ms">
             <h3>01 / CUSTOM</h3>
-
             <p>
               No generic templates. Every website is designed around your
               business, audience and goals.
             </p>
           </div>
-
           <div class="statement-column" data-statement style="--delay: 100ms">
             <h3>02 / MODERN</h3>
-
             <p>
               Modern interfaces, smooth interactions and responsive experiences
               across devices.
             </p>
           </div>
-
           <div class="statement-column" data-statement style="--delay: 200ms">
             <h3>03 / FUNCTIONAL</h3>
-
             <p>
               Beautiful design is only part of the project. Everything should
               actually work.
@@ -1915,21 +1563,20 @@
       </div>
     </section>
 
-    <!-- =======================================================
-       WHY CODEXYZ
-  ======================================================== -->
-
+    <!-- WHY CODEXYZ -->
     <section class="why-codexyz" id="why-codexyz">
       <div class="why-codexyz-inner">
         <div class="why-codexyz-heading reveal">
           <span class="section-label">WHY CODEXYZ</span>
-          <h2>Built with <span>purpose.</span></h2>
+          <h2>
+            Built with
+            <span>purpose.</span>
+          </h2>
           <p>
             CodeXYZ combines clean design, thoughtful development, and a focus
             on creating digital experiences that actually serve your goals.
           </p>
         </div>
-
         <div class="why-codexyz-grid">
           <div class="why-card reveal">
             <span class="why-number">01</span>
@@ -1939,7 +1586,6 @@
               audience, and vision.
             </p>
           </div>
-
           <div class="why-card reveal">
             <span class="why-number">02</span>
             <h3>Design Meets Code</h3>
@@ -1948,7 +1594,6 @@
               websites that look and work beautifully.
             </p>
           </div>
-
           <div class="why-card reveal">
             <span class="why-number">03</span>
             <h3>Clean &amp; Reliable</h3>
@@ -1957,7 +1602,6 @@
               built with quality in mind.
             </p>
           </div>
-
           <div class="why-card reveal">
             <span class="why-number">04</span>
             <h3>Made to Grow</h3>
@@ -1970,30 +1614,25 @@
       </div>
     </section>
 
-    <!-- =======================================================
-       CONTACT
-  ======================================================== -->
-
+    <!-- CONTACT -->
     <section id="contact">
       <div class="section-label">05 — Contact</div>
-
       <div class="contact-container">
         <div class="contact-info">
           <h2>
-            Let's build<br />
-            <span class="pink"> something. </span>
+            Let's build
+            <br />
+            <span class="pink">something.</span>
           </h2>
-
           <p>
             Have an idea for a website or web application? Tell me about it and
             let's turn your idea into something real.
           </p>
-
           <div class="contact-links">
+            <!-- TODO: replace with your real email (in both places) -->
             <a href="mailto:your@email.com" class="contact-social-link">
               → your@email.com
             </a>
-
             <a
               href="https://www.linkedin.com/in/haddad-dhia-b3678b387/"
               target="_blank"
@@ -2002,7 +1641,6 @@
             >
               → LinkedIn
             </a>
-
             <a
               href="https://github.com/dhiadhia829-hash"
               target="_blank"
@@ -2015,13 +1653,31 @@
         </div>
 
         <form class="contact-form">
-          <input type="text" name="name" placeholder="Your name" required />
-
-          <input type="email" name="email" placeholder="Your email" required />
-
-          <input type="text" name="company" placeholder="Company / Business" />
-
-          <select name="project_type" required>
+          <label class="sr-only" for="f-name">Your name</label>
+          <input
+            id="f-name"
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+          />
+          <label class="sr-only" for="f-email">Your email</label>
+          <input
+            id="f-email"
+            type="email"
+            name="email"
+            placeholder="Your email"
+            required
+          />
+          <label class="sr-only" for="f-company">Company / Business</label>
+          <input
+            id="f-company"
+            type="text"
+            name="company"
+            placeholder="Company / Business"
+          />
+          <label class="sr-only" for="f-type">What do you need?</label>
+          <select id="f-type" name="project_type" required>
             <option value="">What do you need?</option>
             <option>Business Website</option>
             <option>E-Commerce Website</option>
@@ -2029,22 +1685,19 @@
             <option>Personal Website</option>
             <option>Something else</option>
           </select>
-
+          <label class="sr-only" for="f-msg">Your project</label>
           <textarea
+            id="f-msg"
             name="message"
             placeholder="Tell me about your project..."
             required
           ></textarea>
-
           <button type="submit" class="submit">START A PROJECT →</button>
         </form>
       </div>
     </section>
 
-    <!-- =======================================================
-       FOOTER
-  ======================================================== -->
-
+    <!-- FOOTER -->
     <footer>
       <div class="footer-brand">CodeXYZ</div>
       <div class="footer-services">
@@ -2053,11 +1706,15 @@
       <div class="footer-copy">© 2026 CodeXYZ — Built for your vision.</div>
     </footer>
 
-    <!-- =======================================================
-       RESULT MODAL
-  ======================================================== -->
-
-    <div class="result-modal" id="resultModal" role="dialog" aria-modal="true">
+    <!-- RESULT MODAL -->
+    <div
+      class="result-modal"
+      id="resultModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resultTitle"
+      aria-describedby="resultMessage"
+    >
       <div class="result-card">
         <div class="result-icon">
           <svg viewBox="0 0 24 24" id="resultSvg">
@@ -2071,351 +1728,190 @@
       </div>
     </div>
 
-    <!-- =======================================================
-       TUBES + SCROLL ENGINE
-  ======================================================== -->
-
     <script type="module">
-      import TubesCursor from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js";
+      /* ---------- CONFIG ---------- */
+      // Replace with your deployed backend or a form service (Formspree, etc.).
+      // localhost only works on your own computer.
+      const CONTACT_ENDPOINT = "http://localhost:3000/api/contact";
 
-      /* ========================================================
-       TUBES
-    ======================================================== */
+      /* ---------- ELEMENTS ---------- */
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => document.querySelectorAll(s);
+      const heroStage = $(".hero-stage"),
+        heroContent = $(".hero-content"),
+        canvasEl = $("#tubes-canvas");
+      const servicesStage = $(".services-stage"),
+        services = $$(".service"),
+        servicesHeading = $(".services-heading");
+      const projectsStage = $(".projects-stage"),
+        projects = $$(".project"),
+        progress = $$(".project-progress span");
+      const floatingLogo = $("#floatingLogo"),
+        heroScroll = $("#heroScroll");
 
-      const canvas = document.getElementById("tubes-canvas");
-
-      const app = TubesCursor(canvas, {
-        tubes: {
-          colors: ["#f967fb", "#53bc28", "#6958d5"],
-
-          lights: {
-            intensity: 200,
-
-            colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"],
-          },
-        },
-      });
-
-      /* ========================================================
-       RANDOM TUBE COLORS
-    ======================================================== */
-
-      const randomColors = (count) => {
-        return Array.from(
-          { length: count },
-
-          () =>
-            "#" +
-            Math.floor(Math.random() * 16777215)
-              .toString(16)
-              .padStart(6, "0")
-        );
-      };
-
-      document.querySelector(".hero").addEventListener("click", (event) => {
-        if (event.target.tagName !== "H1") {
-          app.tubes.setColors(randomColors(3));
-
-          app.tubes.setLightsColors(randomColors(4));
-        }
-      });
-
-      /* ========================================================
-       ELEMENTS
-    ======================================================== */
-
-      const heroStage = document.querySelector(".hero-stage");
-      const hero = document.querySelector(".hero");
-      const heroContent = document.querySelector(".hero-content");
-      const canvasElement = document.getElementById("tubes-canvas");
-      const servicesStage = document.querySelector(".services-stage");
-      const services = document.querySelectorAll(".service");
-      const projectsStage = document.querySelector(".projects-stage");
-      const projects = document.querySelectorAll(".project");
-      const progress = document.querySelectorAll(".project-progress span");
-      const floatingLogo = document.getElementById("floatingLogo");
-
-      /* ========================================================
-       SPLIT TEXT INTO WORDS
-    ======================================================== */
-
-      document.querySelectorAll("[data-reveal]").forEach((element) => {
-        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-
+      /* ---------- SPLIT TEXT INTO WORDS ---------- */
+      $$("[data-reveal]").forEach((el) => {
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
         const nodes = [];
-
-        while (walker.nextNode()) {
-          nodes.push(walker.currentNode);
-        }
-
+        while (walker.nextNode()) nodes.push(walker.currentNode);
         nodes.forEach((node) => {
-          const words = node.textContent.trim().split(/\s+/);
-
+          const words = node.textContent.trim().split(/\s+/).filter(Boolean);
           if (!words.length) return;
-
-          const fragment = document.createDocumentFragment();
-
-          words.forEach((word, index) => {
+          const frag = document.createDocumentFragment();
+          words.forEach((w, i) => {
             const span = document.createElement("span");
-
             span.className = "word";
-
-            span.textContent = word;
-
-            span.style.setProperty("--delay", `${index * 38}ms`);
-
-            fragment.appendChild(span);
-
-            fragment.appendChild(document.createTextNode(" "));
+            span.textContent = w;
+            span.style.setProperty("--delay", `${i * 38}ms`);
+            frag.append(span, document.createTextNode(" "));
           });
-
-          node.parentNode.replaceChild(fragment, node);
+          node.parentNode.replaceChild(frag, node);
         });
       });
 
-      /* ========================================================
-       INTERSECTION OBSERVER
-    ======================================================== */
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("revealed");
-            }
-          });
-        },
-        {
-          threshold: 0.12,
-        }
+      /* ---------- OBSERVERS ---------- */
+      const makeObserver = (cls, threshold) =>
+        new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add(cls);
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold }
+        );
+      const wordObs = makeObserver("revealed", 0.12);
+      const showObs = makeObserver("visible", 0.15);
+      $$("[data-reveal]").forEach((el) => wordObs.observe(el));
+      $$("[data-card], [data-statement], .reveal").forEach((el) =>
+        showObs.observe(el)
       );
 
-      document.querySelectorAll("[data-reveal]").forEach((element) => {
-        observer.observe(element);
+      /* ---------- ABOUT CARD MOUSE GLOW ---------- */
+      $$(".about-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+          card.style.setProperty("--my", `${e.clientY - r.top}px`);
+        });
       });
 
-      /* ========================================================
-       CARD OBSERVER
-    ======================================================== */
-
-      const cardObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        {
-          threshold: 0.15,
-        }
-      );
-
-      document
-        .querySelectorAll("[data-card], [data-statement]")
-        .forEach((element) => {
-          cardObserver.observe(element);
-        });
-
-      /* ========================================================
-       CLAMP
-    ======================================================== */
-
-      function clamp(value, min, max) {
-        return Math.min(Math.max(value, min), max);
+      /* ---------- SCROLL ENGINE ---------- */
+      const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
+      function stageProgress(el) {
+        const dist = el.offsetHeight - window.innerHeight;
+        return dist <= 0
+          ? 0
+          : clamp(-el.getBoundingClientRect().top / dist, 0, 1);
       }
-
-      /* ========================================================
-       STAGE PROGRESS
-    ======================================================== */
-
-      function stageProgress(element) {
-        const rect = element.getBoundingClientRect();
-
-        const distance = element.offsetHeight - window.innerHeight;
-
-        if (distance <= 0) return 0;
-
-        return clamp(-rect.top / distance, 0, 1);
-      }
-
-      /* ========================================================
-       SCROLL ENGINE
-    ======================================================== */
-
       let ticking = false;
-
       function updateScroll() {
         ticking = false;
-
-        const scroll = window.scrollY;
-
-        /* FLOATING LOGO */
-
-        if (scroll > window.innerHeight * 0.55) {
-          floatingLogo.classList.add("visible");
-        } else {
-          floatingLogo.classList.remove("visible");
-        }
-
-        /* HERO SCRUB */
+        floatingLogo.classList.toggle(
+          "visible",
+          window.scrollY > window.innerHeight * 0.55
+        );
+        heroScroll.classList.toggle("hidden", window.scrollY > 60);
 
         const hp = stageProgress(heroStage);
-
-        const heroY = hp * -35;
-        const heroScale = 1 + hp * 0.12;
-        const heroOpacity = 1 - hp * 0.55;
-        const contentY = hp * -46;
-        const contentScale = 1 - hp * 0.1;
-        const contentOpacity = 1 - hp * 0.85;
-
-        canvasElement.style.setProperty("--hero-y", `${heroY}px`);
-        canvasElement.style.setProperty("--hero-scale", heroScale);
-        canvasElement.style.setProperty("--hero-opacity", heroOpacity);
-
-        heroContent.style.setProperty("--hero-content-y", `${contentY}px`);
-        heroContent.style.setProperty("--hero-content-scale", contentScale);
-        heroContent.style.setProperty("--hero-content-opacity", contentOpacity);
-
-        /* SERVICES SCRUB */
+        canvasEl.style.setProperty("--hero-y", `${hp * -35}px`);
+        canvasEl.style.setProperty("--hero-scale", 1 + hp * 0.12);
+        canvasEl.style.setProperty("--hero-opacity", 1 - hp * 0.55);
+        heroContent.style.setProperty("--hero-content-y", `${hp * -46}px`);
+        heroContent.style.setProperty("--hero-content-scale", 1 - hp * 0.1);
+        heroContent.style.setProperty("--hero-content-opacity", 1 - hp * 0.85);
 
         const sp = stageProgress(servicesStage);
-
-        const serviceIndex = Math.min(3, Math.floor(sp * 4));
-
-        services.forEach((service, index) => {
-          service.classList.toggle("active", index <= serviceIndex);
-        });
-
-        const servicesHeading = document.querySelector(".services-heading");
-
+        const si = Math.min(3, Math.floor(sp * 4));
+        services.forEach((s, i) => s.classList.toggle("active", i <= si));
         servicesHeading.style.setProperty(
           "--services-heading-y",
           `${sp * -50}px`
         );
-
         servicesHeading.style.setProperty(
           "--services-heading-opacity",
           1 - sp * 0.25
         );
 
-        /* PROJECT SCRUB */
-
-        const pp = stageProgress(projectsStage);
-
-        const projectIndex = Math.min(
+        const pi = Math.min(
           projects.length - 1,
-          Math.floor(pp * projects.length)
+          Math.floor(stageProgress(projectsStage) * projects.length)
         );
-
-        projects.forEach((project, index) => {
-          project.classList.toggle("active", index === projectIndex);
-        });
-
-        progress.forEach((dot, index) => {
-          dot.classList.toggle("active", index === projectIndex);
-        });
-
-        ticking = false;
+        projects.forEach((p, i) => p.classList.toggle("active", i === pi));
+        progress.forEach((d, i) => d.classList.toggle("active", i === pi));
       }
-
       window.addEventListener(
         "scroll",
         () => {
           if (!ticking) {
-            window.requestAnimationFrame(updateScroll);
-
+            requestAnimationFrame(updateScroll);
             ticking = true;
           }
         },
-        {
-          passive: true,
-        }
+        { passive: true }
       );
-
       window.addEventListener("resize", updateScroll);
-
       updateScroll();
 
-      /* ========================================================
-       RESULT MODAL
-    ======================================================== */
-
-      const resultModal = document.getElementById("resultModal");
-      const resultTitle = document.getElementById("resultTitle");
-      const resultMessage = document.getElementById("resultMessage");
-      const resultSvg = document.getElementById("resultSvg");
-      let modalTimeout;
-
+      /* ---------- RESULT MODAL ---------- */
+      const modal = $("#resultModal"),
+        rTitle = $("#resultTitle"),
+        rMsg = $("#resultMessage"),
+        rSvg = $("#resultSvg");
       const ICONS = {
         success: '<path d="M5 13l4 4L19 7" />',
         error: '<path d="M6 6l12 12M18 6L6 18" />',
       };
-
-      function showResult(type, title, message) {
-        clearTimeout(modalTimeout);
-
-        resultModal.classList.remove("show");
-        void resultModal.offsetWidth; // restart animations
-
-        resultModal.classList.toggle("error", type === "error");
-        resultSvg.innerHTML = ICONS[type];
-        resultTitle.textContent = title;
-        resultMessage.textContent = message;
-
-        resultModal.classList.add("show");
-        modalTimeout = setTimeout(hideResult, 6000);
-      }
-
+      let modalTimeout;
       function hideResult() {
         clearTimeout(modalTimeout);
-        resultModal.classList.remove("show");
+        modal.classList.remove("show");
       }
-
-      document
-        .getElementById("resultClose")
-        .addEventListener("click", hideResult);
-
-      resultModal.addEventListener("click", (e) => {
-        if (e.target === resultModal) hideResult();
+      function showResult(type, title, message) {
+        clearTimeout(modalTimeout);
+        modal.classList.remove("show");
+        void modal.offsetWidth;
+        modal.classList.toggle("error", type === "error");
+        rSvg.innerHTML = ICONS[type];
+        rTitle.textContent = title;
+        rMsg.textContent = message;
+        modal.classList.add("show");
+        $("#resultClose").focus();
+        modalTimeout = setTimeout(hideResult, 6000);
+      }
+      $("#resultClose").addEventListener("click", hideResult);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) hideResult();
       });
-
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") hideResult();
       });
 
-      /* ========================================================
-       CONTACT FORM
-    ======================================================== */
-
-      const contactForm = document.querySelector(".contact-form");
-      const submitBtn = contactForm.querySelector(".submit");
-
-      contactForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const formData = Object.fromEntries(new FormData(contactForm));
-
+      /* ---------- CONTACT FORM ---------- */
+      const form = $(".contact-form"),
+        submitBtn = form.querySelector(".submit");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        const label = submitBtn.textContent;
         submitBtn.disabled = true;
-        const originalText = submitBtn.textContent;
         submitBtn.textContent = "SENDING...";
-
         try {
-          const response = await fetch("http://localhost:3000/api/contact", {
+          const res = await fetch(CONTACT_ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(data),
           });
-
-          const result = await response.json();
-
-          if (response.ok) {
+          const result = await res.json().catch(() => ({}));
+          if (res.ok) {
             showResult(
               "success",
               "Message sent!",
               "Thanks for reaching out. I'll get back to you as soon as possible."
             );
-            contactForm.reset();
+            form.reset();
           } else {
             showResult(
               "error",
@@ -2423,8 +1919,8 @@
               result.error || "Please try again."
             );
           }
-        } catch (error) {
-          console.error("Contact form error:", error);
+        } catch (err) {
+          console.error("Contact form error:", err);
           showResult(
             "error",
             "Connection failed",
@@ -2432,9 +1928,42 @@
           );
         } finally {
           submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
+          submitBtn.textContent = label;
         }
       });
+
+      /* ---------- TUBES (loaded last, so a CDN failure can't break the page) ---------- */
+      const randomColors = (n) =>
+        Array.from(
+          { length: n },
+          () =>
+            "#" +
+            Math.floor(Math.random() * 16777215)
+              .toString(16)
+              .padStart(6, "0")
+        );
+      try {
+        const { default: TubesCursor } = await import(
+          "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js"
+        );
+        const app = TubesCursor(canvasEl, {
+          tubes: {
+            colors: ["#f967fb", "#53bc28", "#6958d5"],
+            lights: {
+              intensity: 200,
+              colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"],
+            },
+          },
+        });
+        $(".hero").addEventListener("click", (e) => {
+          if (e.target.tagName !== "H1") {
+            app.tubes.setColors(randomColors(3));
+            app.tubes.setLightsColors(randomColors(4));
+          }
+        });
+      } catch (err) {
+        console.warn("Tubes background failed to load:", err);
+      }
     </script>
   </body>
 </html>
